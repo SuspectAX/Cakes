@@ -1,74 +1,74 @@
 /* General styling */
-body {
+body, html {
     margin: 0;
     padding: 0;
     background-color: #1a1a1a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
     overflow: hidden;
-    color: #ffffff;
 }
 
 /* Title styling */
 .title {
     text-align: center;
     font-size: 2em;
-    font-family: "Georgia", serif;
-    margin-bottom: 20px;
     color: #ffda79;
+    margin: 20px 0;
 }
 
-/* Background animation styling */
-.background-animation {
+/* Canvas for bouncing balls background */
+#backgroundCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: url('https://suspectax.github.io/MyPortfolio/images/ball.svg') repeat;
-    animation: bounce 3s infinite alternate;
-    opacity: 0.1;
+    pointer-events: none;
 }
 
-/* Container and Gallery styling */
+/* Gallery styling */
 .container {
-    text-align: center;
-    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
+    max-width: 90%;
 }
 
-/* Photo container and image styling */
+/* Photo container */
 .photo-container {
     position: relative;
-    width: 120px;
-    height: 80px;
     overflow: hidden;
+    width: 150px;
+    height: 150px;
+    transition: transform 0.4s ease;
     border-radius: 8px;
-    transition: all 0.5s ease;
 }
 
 .photo-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
-/* Hover effect */
-.photo-container:hover img {
-    transform: scale(2);
-    opacity: 1;
+.photo-container:hover {
+    transform: scale(1.8); /* Enlarges the entire container to 180% */
+    z-index: 1;
 }
-.photo-container:hover ~ .photo-container img {
-    opacity: 0.4;
+
+.photo-container:hover img {
+    transform: scale(1); /* Ensures image scales fully without cropping */
+}
+
+.photo-container:hover ~ .photo-container {
+    opacity: 0.5;
 }
 
 /* Message styling */
@@ -78,61 +78,33 @@ body {
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    transition: opacity 0.5s ease;
-    color: #ffffff;
-    font-size: 0.85em;
-    font-family: "Georgia", serif;
+    font-size: 0.9em;
+    color: #fff;
     padding: 5px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     text-align: center;
     width: 90%;
-    white-space: pre-wrap;
-    line-height: 1.3;
+    transition: opacity 0.4s ease;
+    font-family: "Georgia", serif;
 }
 
-/* Show message only on hover */
+/* Show message on hover */
 .photo-container:hover .message {
     opacity: 1;
 }
 
-/* Desktop view adjustments */
-@media (min-width: 768px) {
-    .gallery {
-        max-width: 80%;
-    }
-    .photo-container {
-        width: 140px;
-        height: 100px;
-    }
-}
-
-/* Mobile view styling */
+/* Mobile view adjustments */
 @media (max-width: 767px) {
     .gallery {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 5px;
+        display: grid;
     }
     .photo-container {
-        width: 100%;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
-    .photo-container:hover img {
-        transform: scale(1.5);
+    .photo-container:hover {
+        transform: scale(1.5); /* Enlarges the entire container to 150% on hover */
     }
-    .photo-container:hover ~ .photo-container img {
-        opacity: 0.4;
-    }
-    .message {
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-}
-
-/* Background bouncing animation */
-@keyframes bounce {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
 }
