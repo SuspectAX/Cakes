@@ -5,7 +5,7 @@ const totalPhotos = photos.length;
 // Show only 7 photos initially
 const showPhotos = () => {
     photos.forEach((photo, index) => {
-        if (index >= currentIndex && index < currentIndex + 7) {
+        if (index === currentIndex) {
             photo.classList.add('active');
         } else {
             photo.classList.remove('active');
@@ -13,11 +13,9 @@ const showPhotos = () => {
     });
 };
 
-// Slide photos to the left like a film camera
+// Slide photos from right to left with fade in/out
 const slidePhotos = () => {
-    const photoContainer = document.querySelector('.photo-container');
-    currentIndex = (currentIndex + 1) % (totalPhotos - 6); // Wrap around
-    photoContainer.style.transform = `translateX(-${(currentIndex * (200 + 10))}px)`; // Adjust position
+    currentIndex = (currentIndex + 1) % totalPhotos; // Wrap around
     showPhotos();
 };
 
