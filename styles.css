@@ -8,6 +8,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     color: #ffffff;
+    font-family: Arial, sans-serif;
 }
 
 /* Gallery styling */
@@ -48,10 +49,14 @@ body {
     opacity: 0;
     transition: opacity 0.5s ease;
     color: #ffffff;
-    font-size: 0.9em;
-    padding: 5px;
+    font-size: 0.85em;
+    font-family: "Georgia", serif; /* Softer, elegant font */
+    padding: 8px;
     background: rgba(0, 0, 0, 0.6);
-    border-radius: 5px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 1.3;
+    width: 90%;
 }
 
 /* Message on desktop: appear at the bottom */
@@ -59,10 +64,12 @@ body {
     .gallery {
         flex-direction: row;
     }
+
     .message {
         bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
+        white-space: pre-wrap; /* Allow messages to be on two lines */
     }
     .photo-container:hover .message {
         opacity: 1;
@@ -91,6 +98,7 @@ body {
         top: 50%;
         right: 10px;
         transform: translateY(-50%);
+        white-space: pre-wrap; /* Allow messages to be on two lines */
     }
     .photo-container:hover .message {
         opacity: 1;
