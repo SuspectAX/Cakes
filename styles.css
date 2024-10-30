@@ -49,8 +49,8 @@ body {
 }
 
 .photo-container img {
-    width: 240px; /* Increased default size */
-    height: 280px;
+    width: 210px; /* Increased default size */
+    height: 250px;
     object-fit: cover;
     transition: transform 0.3s ease, opacity 0.3s ease;
     border-radius: 10px;
