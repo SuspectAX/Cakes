@@ -13,9 +13,11 @@ const showPhotos = () => {
     });
 };
 
-// Slide photos to the left
+// Slide photos to the left like a film camera
 const slidePhotos = () => {
+    const photoContainer = document.querySelector('.photo-container');
     currentIndex = (currentIndex + 1) % (totalPhotos - 6); // Wrap around
+    photoContainer.style.transform = `translateX(-${(currentIndex * (200 + 10))}px)`; // Adjust position
     showPhotos();
 };
 
