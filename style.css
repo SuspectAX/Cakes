@@ -1,33 +1,26 @@
 body {
     margin: 0;
-    background-color: #121212;
-    font-family: 'Arial', sans-serif;
-    color: white; /* Set text color to white for better visibility */
-}
-
-.gallery-title {
-    text-align: center; /* Center-align the title */
-    margin: 1rem 0; /* Add margin around the title */
-    font-size: 2rem; /* Set font size for the title */
+    padding: 0;
+    background-color: #121212; /* Dark background color */
+    font-family: Arial, sans-serif;
 }
 
 .kodfun-galeri {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    gap: 1rem; /* Space between images */
-    padding: 1rem; /* Padding around the gallery */
+    display: flex;
+    height: 20rem;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .kodfun-galeri > div {
-    flex: 1 1 calc(33% - 1rem); /* Three items per row, minus the gap */
-    height: 200px; /* Set a fixed height for images */
-    border-radius: 1rem; /* Rounded corners */
-    background-position: center; /* Center background */
-    background-repeat: no-repeat; /* No repeat */
-    background-size: cover; /* Cover the entire div */
-    transition: flex 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4); /* Smooth transition for hover effect */
+    flex: 1;
+    border-radius: 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    transition: all .8s cubic-bezier(.25, .4, .45, 1.4);
 }
 
 .kodfun-galeri > div:hover {
-    flex: 1 1 calc(50% - 1rem); /* Expand to fill half the row on hover */
+    flex: 5;
 }
