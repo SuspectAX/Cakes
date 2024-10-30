@@ -1,52 +1,69 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* General body styling */
 body {
-  background-color: #121212; /* Dark theme background */
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark theme background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #ffffff; /* Light text for contrast */
 }
 
+/* Gallery styling */
 .gallery {
-  display: flex;
-  height: 20rem; /* Fixed height for the row */
-  gap: 1rem; /* Small gap between images */
-  overflow: hidden; /* Prevents overflow on smaller screens */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Small gap between images */
+    max-width: 100%;
+    overflow: hidden;
 }
 
-.gallery-item {
-  flex: 1; /* Makes each image thin by default */
-  height: 100%;
-  border-radius: 1rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  transition: all 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4);
-  opacity: 0.9;
+.gallery img {
+    flex: 1 1 30px;
+    min-width: 0;
+    height: auto;
+    max-height: 120px;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: all 0.4s ease;
+    border-radius: 5px;
 }
 
-/* Hover effect to expand width */
-.gallery-item:hover {
-  flex: 4; /* Expands the width */
-  opacity: 1;
+/* Hover effect */
+.gallery img:hover {
+    flex: 1 1 280px;
+    opacity: 1;
+    transform: scale(1.05);
+    z-index: 2;
 }
 
-/* Mobile view adjustments */
-@media (max-width: 768px) {
-  .gallery {
-    flex-direction: column;
-    height: auto; /* Adjust height for vertical stacking */
-  }
+/* Desktop view */
+@media (min-width: 768px) {
+    .gallery {
+        flex-direction: row;
+    }
 
-  .gallery-item {
-    width: 100%;
-    height: 10rem; /* Smaller height for mobile */
-  }
+    .gallery img {
+        max-height: 150px;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery img {
+        max-width: 90%;
+        height: auto;
+        max-height: 80px;
+    }
+
+    .gallery img:hover {
+        max-width: 100%;
+        max-height: 300px;
+    }
 }
