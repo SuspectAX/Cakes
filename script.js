@@ -1,7 +1,5 @@
 // Canvas setup for bouncing balls
-const canvas = document.createElement("canvas");
-canvas.id = "backgroundCanvas";
-document.body.appendChild(canvas);
+const canvas = document.getElementById("backgroundCanvas");
 const ctx = canvas.getContext('2d');
 
 function resizeCanvas() {
@@ -15,7 +13,7 @@ window.addEventListener("resize", resizeCanvas);
 // Ball physics setup with continuous bounce
 const balls = [];
 const gravity = 0.2;
-const colorChangeSpeed = 0.01; // Speed of color transition
+const colorChangeSpeed = 0.01;
 
 for (let i = 0; i < 10; i++) {
     balls.push({
@@ -57,4 +55,3 @@ function animateBalls() {
 }
 
 animateBalls();
-
