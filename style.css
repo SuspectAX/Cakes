@@ -1,43 +1,26 @@
 body {
     margin: 0;
     background-color: #121212;
-    color: white;
     font-family: 'Arial', sans-serif;
 }
 
-.container {
-    position: relative;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
+.kodfun-galeri {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 1rem; /* Space between images */
+    padding: 1rem; /* Padding around the gallery */
 }
 
-.title {
-    text-align: center;
-    font-size: 36px; /* Larger title size */
-    margin-bottom: 20px;
+.kodfun-galeri > div {
+    flex: 1 1 calc(33% - 1rem); /* Three items per row, minus the gap */
+    height: 200px; /* Set a fixed height for images */
+    border-radius: 1rem; /* Rounded corners */
+    background-position: center; /* Center background */
+    background-repeat: no-repeat; /* No repeat */
+    background-size: cover; /* Cover the entire div */
+    transition: flex 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4); /* Smooth transition for hover effect */
 }
 
-.slider {
-    overflow: hidden; /* Hide overflow */
-    width: 100%; /* Full width */
-    position: relative; /* Enable positioning */
-}
-
-.photo-container {
-    display: flex; /* Use flexbox for horizontal layout */
-    transition: transform 1s ease-in-out; /* Smooth transition for sliding */
-    position: relative; /* Enable positioning */
-}
-
-.photo {
-    width: 100vw; /* Full viewport width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure images cover their space */
-    opacity: 0; /* Initially hidden */
-    transition: opacity 1s ease; /* Smooth transition for fading */
-}
-
-.photo.active {
-    opacity: 1; /* Fully visible for active photo */
+.kodfun-galeri > div:hover {
+    flex: 1 1 calc(50% - 1rem); /* Expand to fill half the row on hover */
 }
