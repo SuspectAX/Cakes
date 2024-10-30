@@ -2,6 +2,13 @@ body {
     margin: 0;
     background-color: #121212;
     font-family: 'Arial', sans-serif;
+    color: white; /* Set text color to white for better visibility */
+}
+
+.gallery-title {
+    text-align: center; /* Center-align the title */
+    margin: 1rem 0; /* Add margin around the title */
+    font-size: 2rem; /* Set font size for the title */
 }
 
 .kodfun-galeri {
