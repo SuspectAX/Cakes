@@ -1,3 +1,4 @@
+// Canvas setup for bouncing balls
 const canvas = document.getElementById("backgroundCanvas");
 const ctx = canvas.getContext('2d');
 
@@ -57,3 +58,20 @@ function animateBalls() {
 }
 
 animateBalls();
+
+// JavaScript for enlarging photos and shrinking others
+document.querySelectorAll(".photo-container").forEach((photo) => {
+    photo.addEventListener("mouseenter", () => {
+        document.querySelectorAll(".photo-container").forEach((otherPhoto) => {
+            if (otherPhoto !== photo) {
+                otherPhoto.classList.add("shrink");
+            }
+        });
+    });
+
+    photo.addEventListener("mouseleave", () => {
+        document.querySelectorAll(".photo-container").forEach((otherPhoto) => {
+            otherPhoto.classList.remove("shrink");
+        });
+    });
+});
