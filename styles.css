@@ -29,6 +29,7 @@ body {
     font-size: 2em;
     color: #ffc107;
     margin-bottom: 20px;
+    font-family: 'Lobster', cursive;
 }
 
 .gallery {
@@ -78,6 +79,7 @@ body {
     padding: 2px;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
+    font-family: 'Pacifico', cursive;
 }
 
 .photo-container:hover .message {
