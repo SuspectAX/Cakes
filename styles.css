@@ -34,9 +34,9 @@ body {
 .gallery {
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted for larger images */
     justify-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -48,8 +48,8 @@ body {
 }
 
 .photo-container img {
-    width: 100px;
-    height: 100px;
+    width: 180px; /* Increased default size */
+    height: 180px;
     object-fit: cover;
     transition: transform 0.3s ease, opacity 0.3s ease;
     border-radius: 10px;
@@ -92,5 +92,10 @@ body {
 
     .title {
         font-size: 1.5em;
+    }
+
+    .photo-container img {
+        width: 120px; /* Smaller image size on mobile */
+        height: 120px;
     }
 }
