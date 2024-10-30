@@ -1,26 +1,50 @@
 body {
     margin: 0;
-    padding: 0;
-    background-color: #121212; /* Dark background color */
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     font-family: Arial, sans-serif;
 }
 
-.kodfun-galeri {
+.gallery {
     display: flex;
-    height: 20rem;
-    gap: 1rem;
-    padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    padding: 20px;
 }
 
-.kodfun-galeri > div {
-    flex: 1;
-    border-radius: 1rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    transition: all .8s cubic-bezier(.25, .4, .45, 1.4);
+.photo {
+    position: relative;
+    overflow: hidden;
+    flex: 1 0 21%; /* Adjusts for 5 images per row, change accordingly */
+    margin: 10px;
+    transition: transform 0.2s ease-in-out;
 }
 
-.kodfun-galeri > div:hover {
-    flex: 5;
+.photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .photo {
+        flex: 1 0 46%; /* Adjusts for 2 images per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .photo {
+        flex: 1 0 100%; /* Stacks images one per row on very small screens */
+    }
 }
