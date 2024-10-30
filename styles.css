@@ -44,20 +44,24 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
 }
 
 .photo-container img {
-    width: 100%;
-    height: auto;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     border-radius: 10px;
 }
 
 .photo-container:hover img {
-    transform: scale(1.6);
+    transform: scale(1.6); /* Enlarges the hovered photo */
     z-index: 1;
+}
+
+.photo-container.shrink img {
+    transform: scale(0.8); /* Shrinks other photos */
 }
 
 .photo-container .message {
