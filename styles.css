@@ -1,106 +1,138 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* General styling */
 body {
-  background-color: #121212; /* Dark theme background */
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  position: relative; /* For positioning the background */
-  overflow: hidden; /* Prevents overflow from background animation */
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #ffffff;
 }
 
+/* Title styling */
 .title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  position: absolute;
-  top: 1rem;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Georgia", serif;
+    margin-bottom: 20px;
+    color: #ffda79;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem; /* Gap between images */
-  height: 80vh; /* Fixed height for gallery */
-}
-
-/* Gallery items */
-.gallery-item {
-  flex: 1 1 calc(14% - 1rem); /* Adjusts item size for desktop view */
-  height: calc(100% - 1rem);
-  border-radius: 1rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: all 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4);
-  opacity: 0.9;
-}
-
-/* Hover effect for desktop */
-.gallery-item:hover {
-  transform: scale(2); /* Grow to twice the size */
-  opacity: 1; /* Full opacity */
-}
-
-/* Mobile view adjustments */
-@media (max-width: 768px) {
-  .gallery {
-    flex-direction: column;
-    height: auto; /* Adjust height for vertical stacking */
-  }
-
-  .gallery-item {
-    flex: 1 1 calc(50% - 1rem); /* 2 columns for mobile */
-    height: 150px; /* Adjust height for mobile */
-  }
-
-  /* Hover effect for mobile */
-  .gallery-item:hover {
-    transform: scale(1.5); /* Grow to 150% */
-  }
-
-  /* Change opacity of surrounding images when one is hovered */
-  .gallery-item:hover ~ .gallery-item {
-    opacity: 0.5; /* Dim surrounding images */
-  }
-}
-
-/* Background animation */
+/* Background animation styling */
 .background-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Place it behind other elements */
-  overflow: hidden; /* Prevent overflow */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('https://suspectax.github.io/MyPortfolio/images/ball.svg') repeat;
+    animation: bounce 3s infinite alternate;
+    opacity: 0.1;
 }
 
-.ball {
-  position: absolute;
-  width: 20px; /* Ball size */
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  animation: bounce 4s linear infinite; /* Animation for balls */
+/* Container and Gallery styling */
+.container {
+    text-align: center;
+    max-width: 90%;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }
 
+/* Photo container and image styling */
+.photo-container {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Hover effect */
+.photo-container:hover img {
+    transform: scale(2);
+    opacity: 1;
+}
+.photo-container:hover ~ .photo-container img {
+    opacity: 0.4;
+}
+
+/* Message styling */
+.message {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    color: #ffffff;
+    font-size: 0.85em;
+    font-family: "Georgia", serif;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    text-align: center;
+    width: 90%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+}
+
+/* Show message only on hover */
+.photo-container:hover .message {
+    opacity: 1;
+}
+
+/* Desktop view adjustments */
+@media (min-width: 768px) {
+    .gallery {
+        max-width: 80%;
+    }
+    .photo-container {
+        width: 140px;
+        height: 100px;
+    }
+}
+
+/* Mobile view styling */
+@media (max-width: 767px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+    .photo-container {
+        width: 100%;
+        height: 150px;
+    }
+    .photo-container:hover img {
+        transform: scale(1.5);
+    }
+    .photo-container:hover ~ .photo-container img {
+        opacity: 0.4;
+    }
+    .message {
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Background bouncing animation */
 @keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-200px); /* Bounce height */
-  }
-  100% {
-    transform: translateY(0);
-  }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
 }
