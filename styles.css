@@ -1,35 +1,51 @@
-/* General styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: #121212; /* Dark background */
+  background-color: #121212; /* Dark theme background */
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
 }
 
-/* Gallery container */
 .gallery {
   display: flex;
-  gap: 1rem; /* Space between images */
-  width: 90%; /* Responsive width */
-  max-width: 1200px; /* Limits gallery size on larger screens */
-  height: 20rem; /* Set gallery height */
+  flex-wrap: wrap;
+  gap: 8px; /* Small gap between images */
+  justify-content: center;
 }
 
-/* Individual image containers */
-.gallery > div {
-  flex: 1;
-  border-radius: 10px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; /* Cover image */
-  transition: flex 0.6s ease, background-size 0.6s ease; /* Smooth zoom */
+.gallery img {
+  width: calc(100% / 14 - 8px); /* Responsive width for desktop */
+  height: auto;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  opacity: 0.8;
 }
 
-/* Expand effect on hover */
-.gallery > div:hover {
-  flex: 5;
-  background-size: 110%; /* Slight zoom on background image */
+/* Hover effect */
+.gallery img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .gallery {
+    flex-direction: column;
+    gap: 4px; /* Adjust gap for mobile */
+  }
+
+  .gallery img {
+    width: 100%; /* Full width on mobile */
+    height: 60px; /* Small height for stacked layout */
+  }
 }
