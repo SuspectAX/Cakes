@@ -16,36 +16,37 @@ body {
 
 .gallery {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px; /* Small gap between images */
-  justify-content: center;
+  height: 20rem; /* Fixed height for the row */
+  gap: 1rem; /* Small gap between images */
+  overflow: hidden; /* Prevents overflow on smaller screens */
 }
 
-.gallery img {
-  width: calc(100% / 14 - 8px); /* Responsive width for desktop */
-  height: auto;
-  object-fit: cover;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  opacity: 0.8;
+.gallery-item {
+  flex: 1; /* Makes each image thin by default */
+  height: 100%;
+  border-radius: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  transition: all 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4);
+  opacity: 0.9;
 }
 
-/* Hover effect */
-.gallery img:hover {
-  transform: scale(1.1);
+/* Hover effect to expand width */
+.gallery-item:hover {
+  flex: 4; /* Expands the width */
   opacity: 1;
-  z-index: 1;
 }
 
 /* Mobile view adjustments */
 @media (max-width: 768px) {
   .gallery {
     flex-direction: column;
-    gap: 4px; /* Adjust gap for mobile */
+    height: auto; /* Adjust height for vertical stacking */
   }
 
-  .gallery img {
-    width: 100%; /* Full width on mobile */
-    height: 60px; /* Small height for stacked layout */
+  .gallery-item {
+    width: 100%;
+    height: 10rem; /* Smaller height for mobile */
   }
 }
