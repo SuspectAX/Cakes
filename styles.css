@@ -48,8 +48,8 @@ body {
 }
 
 .photo-container img {
-    width: 180px; /* Increased default size */
-    height: 180px;
+    width: 240px; /* Increased default size */
+    height: 280px;
     object-fit: cover;
     transition: transform 0.3s ease, opacity 0.3s ease;
     border-radius: 10px;
@@ -95,7 +95,7 @@ body {
     }
 
     .photo-container img {
-        width: 120px; /* Smaller image size on mobile */
-        height: 120px;
+        width: 150px; /* Smaller image size on mobile */
+        height: 170px;
     }
 }
