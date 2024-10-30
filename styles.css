@@ -20,25 +20,17 @@ body {
 }
 
 .gallery img {
-    flex: 1 1 30px;
+    flex: 1 1 50px;
     min-width: 0;
     height: auto;
     max-height: 120px;
     object-fit: cover;
     opacity: 0.6;
     transition: all 0.4s ease;
-    border-radius: 5px;
+    border-radius: 10px; /* Smoother edges */
 }
 
-/* Hover effect */
-.gallery img:hover {
-    flex: 1 1 280px;
-    opacity: 1;
-    transform: scale(1.05);
-    z-index: 2;
-}
-
-/* Desktop view */
+/* Hover effect for desktop */
 @media (min-width: 768px) {
     .gallery {
         flex-direction: row;
@@ -46,6 +38,16 @@ body {
 
     .gallery img {
         max-height: 150px;
+    }
+
+    .gallery img:hover {
+        flex: 1 1 100%; /* Expand to full width */
+        max-height: 500px; /* Increase height on hover */
+        opacity: 1;
+        object-fit: contain; /* Show full photo */
+        z-index: 2;
+        border-radius: 15px; /* Further smooth edges on hover */
+        transform: scale(1.02); /* Slight enlargement for effect */
     }
 }
 
@@ -57,13 +59,19 @@ body {
     }
 
     .gallery img {
-        max-width: 90%;
+        max-width: 85%; /* Larger unhovered size */
         height: auto;
-        max-height: 80px;
+        max-height: 120px;
     }
 
+    /* Hover effect for mobile */
     .gallery img:hover {
-        max-width: 100%;
-        max-height: 300px;
+        max-width: 70%; /* Occupies 70% of screen width */
+        max-height: 70vh; /* Occupies 70% of screen height */
+        opacity: 1;
+        object-fit: contain; /* Show full photo */
+        border-radius: 15px; /* Smooth edges */
+        z-index: 2;
+        transform: scale(1.05); /* Slight enlargement for effect */
     }
 }
