@@ -49,20 +49,20 @@ body {
 }
 
 .photo-container img {
-    width: 210px; /* Increased default size */
-    height: 250px;
+    width: 180px; /* Increased default size */
+    height: 225px;
     object-fit: cover;
     transition: transform 0.3s ease, opacity 0.3s ease;
     border-radius: 10px;
 }
 
 .photo-container:hover img {
-    transform: scale(1.6); /* Enlarges the hovered photo */
+    transform: scale(2); /* Enlarges the hovered photo */
     z-index: 1;
 }
 
 .photo-container.shrink img {
-    transform: scale(0.8); /* Shrinks other photos */
+    transform: scale(0.7); /* Shrinks other photos */
 }
 
 .photo-container .message {
