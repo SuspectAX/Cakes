@@ -7,71 +7,92 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    color: #ffffff; /* Light text for contrast */
+    color: #ffffff;
 }
 
 /* Gallery styling */
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px; /* Small gap between images */
+    gap: 10px; /* Gap between images */
     max-width: 100%;
-    overflow: hidden;
 }
 
-.gallery img {
-    flex: 1 1 50px;
-    min-width: 0;
-    height: auto;
+/* Container for each photo and message */
+.photo-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Styling for images */
+.photo-container img {
+    display: block;
+    width: 100%;
     max-height: 120px;
     object-fit: cover;
-    opacity: 0.6;
-    transition: all 0.4s ease;
-    border-radius: 10px; /* Smoother edges */
+    transition: all 0.5s ease;
+    opacity: 0.8;
 }
 
-/* Hover effect for desktop */
+/* Hover effect for images */
+.photo-container:hover img {
+    transform: translateY(-10px) scale(1.1); /* Zoom out upward */
+    opacity: 1;
+    border-radius: 15px; /* Smooth edges */
+}
+
+/* Message styling */
+.message {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    color: #ffffff;
+    font-size: 0.9em;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+}
+
+/* Message on desktop: appear at the bottom */
 @media (min-width: 768px) {
     .gallery {
         flex-direction: row;
     }
-
-    .gallery img {
-        max-height: 150px;
+    .message {
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
     }
-
-    .gallery img:hover {
-        flex: 1 1 100%; /* Expand to full width */
-        max-height: 500px; /* Increase height on hover */
+    .photo-container:hover .message {
         opacity: 1;
-        object-fit: contain; /* Show full photo */
-        z-index: 2;
-        border-radius: 15px; /* Further smooth edges on hover */
-        transform: scale(1.02); /* Slight enlargement for effect */
     }
 }
 
-/* Mobile view */
+/* Mobile view styling */
 @media (max-width: 767px) {
     .gallery {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
-
-    .gallery img {
-        max-width: 85%; /* Larger unhovered size */
-        height: auto;
-        max-height: 120px;
+    .photo-container {
+        max-width: 90%; /* Align to the left */
+        margin: 0 auto;
     }
-
-    /* Hover effect for mobile */
-    .gallery img:hover {
-        max-width: 70%; /* Occupies 70% of screen width */
-        max-height: 70vh; /* Occupies 70% of screen height */
+    .photo-container img {
+        max-height: 150px;
+    }
+    .photo-container:hover img {
+        max-width: 100%;
+        max-height: 300px;
+        transform: scale(1.1);
+    }
+    .message {
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+    .photo-container:hover .message {
         opacity: 1;
-        object-fit: contain; /* Show full photo */
-        border-radius: 15px; /* Smooth edges */
-        z-index: 2;
-        transform: scale(1.05); /* Slight enlargement for effect */
     }
 }
