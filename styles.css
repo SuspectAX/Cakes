@@ -57,7 +57,7 @@ body {
 }
 
 .photo-container:hover img {
-    transform: scale(2); /* Enlarges the hovered photo */
+    transform: scale(1.6); /* Enlarges the hovered photo */
     z-index: 1;
 }
 
