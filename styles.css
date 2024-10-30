@@ -1,4 +1,4 @@
-/* Reset some default styling */
+/* Reset default styling */
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +26,7 @@ body {
 
 .image-container {
   overflow: hidden;
-  flex: 1 1 calc(33.333% - 20px); /* For 3 images per row on desktop */
+  flex: 1 1 calc(33.333% - 20px); /* 3 images per row on desktop */
   max-width: calc(33.333% - 20px);
   position: relative;
   border-radius: 10px;
@@ -41,13 +41,13 @@ body {
 }
 
 .image-container:hover img {
-  transform: scale(1.1); /* Zoom in effect on hover */
+  transform: scale(1.1); /* Zoom effect on hover */
 }
 
 /* Responsive for tablets */
 @media (max-width: 768px) {
   .image-container {
-    flex: 1 1 calc(50% - 20px); /* For 2 images per row on tablet */
+    flex: 1 1 calc(50% - 20px); /* 2 images per row on tablets */
     max-width: calc(50% - 20px);
   }
 }
@@ -55,7 +55,7 @@ body {
 /* Responsive for mobile */
 @media (max-width: 480px) {
   .image-container {
-    flex: 1 1 100%; /* For 1 image per row on mobile */
+    flex: 1 1 100%; /* 1 image per row on mobile */
     max-width: 100%;
   }
 }
