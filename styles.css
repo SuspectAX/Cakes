@@ -1,109 +1,106 @@
-/* General body styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #1a1a1a; /* Dark theme background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
+  background-color: #121212; /* Dark theme background */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  position: relative; /* For positioning the background */
+  overflow: hidden; /* Prevents overflow from background animation */
 }
 
-/* Gallery styling */
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  position: absolute;
+  top: 1rem;
+}
+
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Gap between images */
-    max-width: 100%;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; /* Gap between images */
+  height: 80vh; /* Fixed height for gallery */
 }
 
-/* Container for each photo and message */
-.photo-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    width: 120px; /* Default width for desktop, adjusts in mobile view */
-    height: 80px;
-    transition: all 0.5s ease;
+/* Gallery items */
+.gallery-item {
+  flex: 1 1 calc(14% - 1rem); /* Adjusts item size for desktop view */
+  height: calc(100% - 1rem);
+  border-radius: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4);
+  opacity: 0.9;
 }
 
-/* Styling for images */
-.photo-container img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    opacity: 0.8;
+/* Hover effect for desktop */
+.gallery-item:hover {
+  transform: scale(2); /* Grow to twice the size */
+  opacity: 1; /* Full opacity */
 }
 
-/* Hover effect for images */
-.photo-container:hover img {
-    transform: scale(1.3); /* Zoom out effect */
-    opacity: 1;
-    border-radius: 15px; /* Smooth edges */
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .gallery {
+    flex-direction: column;
+    height: auto; /* Adjust height for vertical stacking */
+  }
+
+  .gallery-item {
+    flex: 1 1 calc(50% - 1rem); /* 2 columns for mobile */
+    height: 150px; /* Adjust height for mobile */
+  }
+
+  /* Hover effect for mobile */
+  .gallery-item:hover {
+    transform: scale(1.5); /* Grow to 150% */
+  }
+
+  /* Change opacity of surrounding images when one is hovered */
+  .gallery-item:hover ~ .gallery-item {
+    opacity: 0.5; /* Dim surrounding images */
+  }
 }
 
-/* Message styling */
-.message {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    color: #ffffff;
-    font-size: 0.85em;
-    font-family: "Georgia", serif; /* Softer, elegant font */
-    padding: 5px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
-    text-align: center;
-    width: 90%;
-    white-space: pre-wrap; /* Two-line messages */
-    line-height: 1.3;
+/* Background animation */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place it behind other elements */
+  overflow: hidden; /* Prevent overflow */
 }
 
-/* Show message only on hover */
-.photo-container:hover .message {
-    opacity: 1;
+.ball {
+  position: absolute;
+  width: 20px; /* Ball size */
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: bounce 4s linear infinite; /* Animation for balls */
 }
 
-/* Desktop view */
-@media (min-width: 768px) {
-    .gallery {
-        flex-direction: row;
-    }
-    .photo-container {
-        width: 140px;
-        height: 90px;
-    }
-    .photo-container:hover {
-        width: 180px;
-        height: 120px;
-    }
-}
-
-/* Mobile view styling */
-@media (max-width: 767px) {
-    .gallery {
-        flex-direction: column;
-        align-items: center;
-    }
-    .photo-container {
-        width: 100%;
-        max-width: 90%;
-        height: 150px;
-    }
-    .photo-container:hover {
-        transform: scale(1.1);
-    }
-    .message {
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-200px); /* Bounce height */
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
